@@ -2,15 +2,20 @@
 # -*- coding: utf-8 -*-
 
 from copy import deepcopy
+import matrixcheck as mc
 
 
 def simple_iterations(A, B, eps):
     A = deepcopy(A)
+    if not mc.is_diagonally_dominant(A):
+        return "Matrix is not diagonally dominant!"
+
     B = deepcopy(B)
+
     N = len(A)
     X = [0.0] * N
-
     matrix = [None] * N
+
     while True:
         for i in range(0, N):
             matrix[i] = B[i]
@@ -20,7 +25,7 @@ def simple_iterations(A, B, eps):
             matrix[i] /= A[i][i]
         norm = abs(X[0] - matrix[0])
         for k in range(0, N):
-            if abs(X[k] - matrix[k] > norm):
+            if abs(X[k] - matrix[k]) > norm:
                 norm = abs(X[k] - matrix[k])
             X[k] = matrix[k]
         if norm <= eps:
@@ -35,4 +40,24 @@ if __name__ == "__main__":
          [0.219, 0.231, 0.187, 3.276]]
     B = [0.341, 0.844, 0.131, 0.381]
 
+    A2 = [[2, 1],
+          [5, 7]]
+    B2 = [11, 13]
+
+    A3 = [[10, -1, 2, 0],
+          [-1, 11, -1, 3],
+          [2, -1, 10, -1],
+          [0, 3, -1, 8]]
+    B3 = [6, 25, -11, 15]
+
+    A4 = [[10, -1, 2, 0],
+          [-1, 11, -1, 3],
+          [2, -1, 10, -1],
+          [0, 3, -1, 2]]
+    B4 = [6, 25, -11, 15]
+
     print(simple_iterations(A, B, 0.001))
+    print(simple_iterations(A2, B2, 0.001))
+    print(simple_iterations(A3, B3, 0.001))
+    print(simple_iterations(A4, B4, 0.001))
+
