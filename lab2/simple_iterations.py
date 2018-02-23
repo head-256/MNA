@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import matrixcheck as mc
+import matrixconvert as mc
 
 
 def simple_iterations(matrix, free_terms, eps):
-    if not mc.is_diagonally_dominant(matrix):
-        return "Matrix is not diagonally dominant!"
-
+    matrix = mc.to_diagonally_dominant(matrix)
     size = len(matrix)
     solutions = [.0] * size
     temp_solutions = [.0] * size
@@ -57,7 +55,14 @@ if __name__ == "__main__":
           [0, 3, -1, 2]]
     B4 = [6, 25, -11, 15]
 
-    print("Result: {roots}".format(roots=simple_iterations(A, B, 0.001)))
-    print("Result: {roots}".format(roots=simple_iterations(A2, B2, 0.001)))
-    print("Result: {roots}".format(roots=simple_iterations(A3, B3, 0.001)))
-    print("Result: {roots}".format(roots=simple_iterations(A4, B4, 0.001)))
+    A5 = [[3, 2, -5],
+          [2, -1, 3],
+          [1, 2, -1]]
+    B5 = [-1, 13, 9]
+
+    print("Result: {roots}".format(roots=simple_iterations(A, B, 0.01)))
+    print("Result: {roots}".format(roots=simple_iterations(A2, B2, 0.01)))
+    print("Result: {roots}".format(roots=simple_iterations(A3, B3, 0.01)))
+    print("Result: {roots}".format(roots=simple_iterations(A4, B4, 0.01)))
+    print("Result: {roots}".format(roots=simple_iterations(A5, B5, 0.01)))
+
