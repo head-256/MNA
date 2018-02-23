@@ -18,7 +18,11 @@ def simple_iterations(matrix, free_terms, eps):
             for j in range(0, size):
                 if i != j:
                     temp_solutions[i] -= matrix[i][j] * solutions[j]
-            temp_solutions[i] /= matrix[i][i]
+            try:
+                temp_solutions[i] /= matrix[i][i]
+            except ZeroDivisionError:
+                print("Zero Division Error!")
+                return None
 
         norm = abs(solutions[0] - temp_solutions[0])
         for i in range(0, size):
