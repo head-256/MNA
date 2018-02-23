@@ -1,36 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from copy import deepcopy
 import matrixcheck as mc
 
 
-def simple_iterations(A, B, eps):
-    A = deepcopy(A)
-    if not mc.is_diagonally_dominant(A):
+def simple_iterations(matrix, free_terms, eps):
+    if not mc.is_diagonally_dominant(matrix):
         return "Matrix is not diagonally dominant!"
 
-    B = deepcopy(B)
-
-    N = len(A)
-    X = [0.0] * N
-    matrix = [None] * N
+    size = len(matrix)
+    solutions = [.0] * size
+    temp_solutions = [.0] * size
 
     while True:
-        for i in range(0, N):
-            matrix[i] = B[i]
-            for j in range(0, N):
+        for i in range(0, size):
+            temp_solutions[i] = free_terms[i]
+            for j in range(0, size):
                 if i != j:
-                    matrix[i] -= A[i][j] * X[j]
-            matrix[i] /= A[i][i]
-        norm = abs(X[0] - matrix[0])
-        for k in range(0, N):
-            if abs(X[k] - matrix[k]) > norm:
-                norm = abs(X[k] - matrix[k])
-            X[k] = matrix[k]
+                    temp_solutions[i] -= matrix[i][j] * solutions[j]
+            temp_solutions[i] /= matrix[i][i]
+
+        norm = abs(solutions[0] - temp_solutions[0])
+        for i in range(0, size):
+            if abs(solutions[i] - temp_solutions[i]) > norm:
+                norm = abs(solutions[i] - temp_solutions[i])
+            solutions[i] = temp_solutions[i]
         if norm <= eps:
             break
-    return X
+    return solutions
 
 
 if __name__ == "__main__":
@@ -56,8 +53,7 @@ if __name__ == "__main__":
           [0, 3, -1, 2]]
     B4 = [6, 25, -11, 15]
 
-    print(simple_iterations(A, B, 0.001))
-    print(simple_iterations(A2, B2, 0.001))
-    print(simple_iterations(A3, B3, 0.001))
-    print(simple_iterations(A4, B4, 0.001))
-
+    print("Result: {roots}".format(roots=simple_iterations(A, B, 0.001)))
+    print("Result: {roots}".format(roots=simple_iterations(A2, B2, 0.001)))
+    print("Result: {roots}".format(roots=simple_iterations(A3, B3, 0.001)))
+    print("Result: {roots}".format(roots=simple_iterations(A4, B4, 0.001)))
