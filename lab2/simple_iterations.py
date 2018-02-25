@@ -65,4 +65,3 @@ if __name__ == "__main__":
     print("Result: {roots}".format(roots=simple_iterations(A3, B3, 0.01)))
     print("Result: {roots}".format(roots=simple_iterations(A4, B4, 0.01)))
     print("Result: {roots}".format(roots=simple_iterations(A5, B5, 0.01)))
-
