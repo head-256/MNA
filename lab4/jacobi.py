@@ -54,6 +54,7 @@ def jacobi(a, tol = 1.0e-9):
     p = identity(n) * 1.0
     for i in range(maxRot):
         aMax, k, l = maxElem(a)
+        print(aMax)
         if aMax < tol:
             return diagonal(a), p
         rotate(a, p, k, l)
@@ -66,10 +67,10 @@ B = array([[5.0, 1.0, 2.0],
           [1.0, 4.0, 1.0],
           [2.0, 1.0, 3.0]])
 C = array([[2.979, 0.273, 0.318, 0.219],
-      [0.273, 3.951, 0.197, 0.231],
-      [0.318, 0.197, 2.875, 0.187],
-      [0.219, 0.231, 0.187, 3.276]])
+           [0.273, 3.951, 0.197, 0.231],
+           [0.318, 0.197, 2.875, 0.187],
+           [0.219, 0.231, 0.187, 3.276]])
 
-print(jacobi(A, tol=0.001))
-print(jacobi(B, tol=0.001))
-print(jacobi(C, tol=0.001))
+print(jacobi(A, tol=0.01))
+print(jacobi(B, tol=0.01))
+print(jacobi(C, tol=0.01))
