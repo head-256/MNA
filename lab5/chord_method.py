@@ -4,7 +4,7 @@
 import math
 
 
-def secant(f, x0, x1, eps):
+def chord_method(f, x0, x1, eps):
     f_x0 = f(x0)
     f_x1 = f(x1)
     x = 0
@@ -13,7 +13,7 @@ def secant(f, x0, x1, eps):
             denominator = float(f_x1 - f_x0) / (x1 - x0)
             x = x1 - float(f_x1) / denominator
         except ZeroDivisionError:
-            raise SystemError("Zero Division")
+            raise SystemExit("Zero Division")
         x0 = x1
         x1 = x
         f_x0 = f_x1
@@ -30,6 +30,6 @@ if __name__ == "__main__":
     x0 = -1
     x1 = 1
 
-    solution = secant(f, x0, x1, eps=0.00001)
+    solution = chord_method(f, x0, x1, eps=0.00001)
 
     print("Result: {root}".format(root=solution))
