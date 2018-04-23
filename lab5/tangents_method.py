@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import math
-import sympy as sp
+import sympy as sym
 
-x = sp.symbols('x')
-f_expr = x - 1 / (3 + sp.sin(3.6 * x))
-dfdx_expr = sp.diff(f_expr, x)
+x = sym.symbols('x')
+f_expr = x - 1 / (3 + sym.sin(3.6 * x))
+dfdx_expr = sym.diff(f_expr, x)
 
-dfdx = sp.lambdify([x], dfdx_expr)
+dfdx = sym.lambdify([x], dfdx_expr)
 
 
 def tangents_method(f, dfdx, x, eps):
