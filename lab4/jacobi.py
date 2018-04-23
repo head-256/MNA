@@ -91,10 +91,17 @@ if __name__ == "__main__":
                [0.318, 0.197, 2.875, 0.187],
                [0.219, 0.231, 0.187, 3.276]])
 
+    D = array([[2.923, 0.220, 0.318, 0.159],
+               [0.363, 4.123, 0.268, 0.327],
+               [0.169, 0.271, 3.906, 0.295],
+               [0.241, 0.319, 0.257, 3.862]])
+
     res_a = jacobi(A, 0.01)
     res_b = jacobi(B, 0.01)
     res_c = jacobi(C, 0.01)
+    res_d = jacobi(D, 0.01)
 
     print("Eigenvalues: {}\nEigenvectors:\n{}".format(res_a[0], transpose(res_a[1])))
     print("Eigenvalues: {}\nEigenvectors:\n{}".format(res_b[0], transpose(res_b[1])))
     print("Eigenvalues: {}\nEigenvectors:\n{}".format(res_c[0], transpose(res_c[1])))
+    print("Eigenvalues: {}\nEigenvectors:\n{}".format(res_d[0], transpose(res_d[1])))
