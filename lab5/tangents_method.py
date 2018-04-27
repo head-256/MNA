@@ -27,6 +27,6 @@ def f(x):
 
 
 if __name__ == "__main__":
-    solution = tangents_method(f, dfdx, x=1, eps=0.00001)
+    solution = tangents_method(f, dfdx, x=1, eps=0.001)
 
     print("Result: {root}".format(root=solution))

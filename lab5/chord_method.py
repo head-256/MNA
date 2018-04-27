@@ -30,6 +30,6 @@ if __name__ == "__main__":
     x0 = -1
     x1 = 1
 
-    solution = chord_method(f, x0, x1, eps=0.00001)
+    solution = chord_method(f, x0, x1, eps=0.001)
 
     print("Result: {root}".format(root=solution))
