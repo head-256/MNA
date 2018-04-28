@@ -6,15 +6,23 @@ import math
 import matplotlib.pyplot as plt
 
 
-def euler(f, y0, a, b, n):
+def ab2(f, y0, a, b, n):
     X = [0] * (n + 1)
     Y = [0] * (n + 1)
     h = (b - a) / float(n)
     print(h)
     X[0] = x = a
     Y[0] = y = y0
-    for i in range(1, n + 1):
-        y += h * f(x, y)
+    _y = y + (3 * f(x, y) - f(x, y)) * h / 2
+    y = y + (f(x, y) + f(x + h, _y)) * h / 2
+    x += h
+    X[1] = x
+    Y[1] = y
+    for i in range(2, n + 1):
+        yf = y
+        yf += (3 * f(X[i - 1], Y[i - 1])) * h / 2
+        yf -= f(X[i - 2], Y[i - 2]) * h / 2
+        y = y + (f(X[i - 1], Y[i - 1]) + f(x + h, yf)) * h / 2
         x += h
         X[i] = x
         Y[i] = y
@@ -33,11 +41,8 @@ if __name__ == '__main__':
     y0 = 2
     a = 1
     b = 1.8
-    n = 15872  # (10^-4)
-    # n = 1579  # (10^-3)
-    # n = 157  # (10^-2)
-    # n = 15  # (10^-1)
-    X, Y = euler(fd, y0, a, b, n)
+    n = 46
+    X, Y = ab2(fd, y0, a, b, n)
     for x, y in list(zip(X, Y)):
         print("x: {x:.6f}   y: {y:.6f}  error: {error:.6f}".format(x=x, y=y, error=abs(y - f(x))))
 
