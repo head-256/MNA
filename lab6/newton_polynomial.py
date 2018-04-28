@@ -34,6 +34,7 @@ if __name__ == '__main__':
 
     print("N4(x1 + x2): ", newton(points, 0.967 + 2.255))
 
+    plt.title('Newton Polynomial')
     plt.grid(True)
-    plt.plot(x, y)
+    plt.plot(x, y, 'r-')
     plt.show()

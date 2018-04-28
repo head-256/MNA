@@ -74,7 +74,6 @@ if __name__ == '__main__':
     lstY = [x[1] for x in data]
     spline, xn = cubic_spline(data)
     X, Y = splines_to_plot(spline, xn, grid_res=1000)
-    print(spline, xn)
 
     plt.title('Cubic Spline')
     plt.grid(True)

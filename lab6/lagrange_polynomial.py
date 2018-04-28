@@ -30,6 +30,7 @@ if '__main__' in __name__:
 
     print("L4(x1 + x2) = ", lagrange(points, 0.967 + 2.255))
 
+    plt.title('Lagrange Polynomial')
     plt.grid(True)
-    plt.plot(x, y)
+    plt.plot(x, y, 'r-')
     plt.show()

@@ -30,7 +30,7 @@ if __name__ == '__main__':
     x_cubic, y_cubic = cs.splines_to_plot(spline, xc, grid_res=1000)
 
     plt.grid(True)
-    plt.plot(x_newton, y_newton, linewidth=4)
+    plt.plot(x_newton, y_newton, 'p-')
     plt.plot(x_lagrange, y_lagrange, '-')
     plt.plot(x_linear, y_linear, 'r-')
     plt.plot(x_quadratic, y_quadratic, 'g-')
