@@ -7,7 +7,6 @@ def trapezoid_method(f, a, b, n):
         raise ValueError("n must be even")
 
     h = (b - a) / float(n)
-    print(h)
     s = 0.5 * (f(a) + f(b))
     for i in range(1, n):
         s += f(a + i * h)

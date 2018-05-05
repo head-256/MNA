@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def f(x: np.ndarray):
+def f(x):
     return x - 1 / (3 + np.sin(3.6 * x))
 
 

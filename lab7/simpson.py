@@ -7,7 +7,6 @@ def simpson(f, a, b, n):
         raise ValueError("n must be even")
 
     h = (b - a) / n
-    print(h)
     s = f(a) + f(b)
     for i in range(1, n, 2):
         s += 4 * f(a + i * h)

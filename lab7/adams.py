@@ -10,7 +10,6 @@ def ab2(f, y0, a, b, n):
     X = [0] * (n + 1)
     Y = [0] * (n + 1)
     h = (b - a) / float(n)
-    print(h)
     X[0] = x = a
     Y[0] = y = y0
     _y = y + (3 * f(x, y) - f(x, y)) * h / 2
@@ -46,6 +45,7 @@ if __name__ == '__main__':
     for x, y in list(zip(X, Y)):
         print("x: {x:.6f}   y: {y:.6f}  error: {error:.6f}".format(x=x, y=y, error=abs(y - f(x))))
 
+    plt.title('Adams 2')
     plt.grid(True)
     plt.plot(X, Y)
     plt.show()
